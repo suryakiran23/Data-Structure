@@ -1,0 +1,91 @@
+#include<stdio.h>
+#include<stdlib.h>
+void create();
+void add_beg();
+void add_end();
+struct node 
+{
+    int info;
+    struct node *link;
+};
+struct node *start=NULL;
+void create()
+{
+    struct node *temp,*p;
+    int choice=1;
+    while(choice==1)
+    {
+        temp=(struct node *)malloc(sizeof(struct node));
+        printf("enter the values of the data");
+        scanf("%d",&temp->info);
+        temp->link=NULL;
+        if(start==NULL)
+        {
+            start=temp;
+        }
+        else
+        {
+            p=start;
+            while(p->link!=NULL)
+            {
+                p=p->link;
+                
+            }
+            p->link=temp;
+        }
+        printf("to continue press 1\nto exit creation press any number");
+        scanf("%d",&choice);
+    }
+}
+void del_inbtw()
+{
+    struct node *temp,*p;
+    p=start;
+    int data;
+    printf("enter the node value");
+    scanf("%d",&data);
+    while(p->link!=NULL)
+{
+    if(p->link->info == data)
+    {
+        temp = p->link;
+        p->link = temp->link;
+        free(temp);
+    }
+    p = p->link;
+}
+}
+void display()
+{
+    struct node *p;
+    p=start;
+    while(p!=NULL)
+    {
+        printf("%d",p->info);
+        p=p->link;
+    }
+}
+int main()
+{
+    while(1)
+    {
+    int choice;
+    printf("enter your choice");
+    scanf("%d",&choice);
+    switch(choice)
+    {
+        case 1: 
+        create();
+        break;
+        case 2:
+        del_inbtw();
+        break;
+        case 3:
+        display();
+        break;
+        case 4:
+        exit(0);
+        break;
+    }
+}
+}
