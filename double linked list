@@ -45,8 +45,39 @@ void display()
     printf("\n");
 }
 struct node *addtoempty(struct node *start,int data);
+{
+    stuct node *temp;
+    temp = (struct node *)malloc(size of(struct node));
+    temp->info = data;
+    temp->prev = NULL;
+    temp->next =NULL;
+    start=temp;
+    return start;
+}
 struct node *addatbeg(struct node *start,int data);
+{
+    struct node*temp;
+    temp = (struct node *)malloc(size of (struct node));
+    temp->info = data;
+    temp->prev = NULL;
+    temp->next = start;
+    start->prev = temp;
+    start = temp;
+    return start;
+}
 struct node *addatend(struct node *start,int data);
+{
+    struct node*temp,*p;
+    temp = (struct node *)malloc(size fo(struct node));
+    temp->info = data;
+    p = start;
+    while(p->next!=NULL)
+    p = p->next;
+    p->next = temp;
+    temp->next = NULL;
+    temp->prev = p;
+    return start;
+}
 struct node *addafter(struct node *start,int data,int item);
 struct node *addbefore(struct node *start,int data ,int item);
 struct node *del(struct node *start,int data);
